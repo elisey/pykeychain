@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "pykeychain"
+version = "1.0.0"
+description = "Library for adding, getting and removing simple passwords from macos keychain."
+authors = ["Elisei <elisey.rav@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/elisey/pykeychain"
+classifiers = [
+"Operating System :: MacOS",
+"License :: OSI Approved :: MIT License",
+"Programming Language :: Python :: 3",
+]
+include = [
+"LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+sh = "^1.14.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.0"
+isort = "^5.10.1"
+mypy = "^0.991"
+flake8 = "^5.0.4"
+black = "^22.10.0"
+python-semantic-release = "^7.32.2"
+bandit = "^1.7.4"
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+
+[tool.black]
+line-length = 120
+target_version = ['py38']
+
+[tool.isort]
+profile = "django"
+lines_after_imports = 2
+line_length = 120
+src_paths = ["service"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+markers = [
+    "manual: manual tests not for CI",
+]
+
+[tool.semantic_release]
+version_variable = "pyproject.toml:version"
