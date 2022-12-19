@@ -47,26 +47,25 @@ tasks:
     deps:
       - install-deps
     cmds:
-      - poetry run black {{.CLI_ARGS}} {{.PACKAGE}}
+      - poetry run black {{.CLI_ARGS}} .
 
   black-check:
     deps:
       - install-deps
     cmds:
-      - poetry run black --check {{.CLI_ARGS}} {{.PACKAGE}}
+      - poetry run black --check {{.CLI_ARGS}} .
 
   isort:
     deps:
       - install-deps
     cmds:
-      - poetry run isort {{.CLI_ARGS}} {{.PACKAGE}}
+      - poetry run isort {{.CLI_ARGS}} .
 
   isort-check:
     deps:
       - install-deps
     cmds:
-      - poetry run isort --check-only {{.CLI_ARGS}} {{.PACKAGE}}
-
+      - poetry run isort --check-only {{.CLI_ARGS}} .
 
   format:
     desc: run all code formatters
