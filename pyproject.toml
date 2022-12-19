@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pykeychain"
-version = "1.0.0"
+version = "1.1.0"
 description = "Library for adding, getting and removing simple passwords from macos keychain."
 authors = ["Elisei <elisey.rav@gmail.com>"]
 license = "MIT"
