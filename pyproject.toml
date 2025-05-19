@@ -1,11 +1,12 @@
-[tool.poetry]
+[project]
 name = "pykeychain"
-version = "1.1.0"
+version = "2.0.0"
 description = "Library for adding, getting and removing simple passwords from macos keychain."
-authors = ["Elisei <elisey.rav@gmail.com>"]
+authors = [
+    { name = "Elisei", email = "elisey.rav@gmail.com" }
+]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/elisey/pykeychain"
 classifiers = [
 "Operating System :: MacOS",
 "License :: OSI Approved :: MIT License",
@@ -15,32 +16,36 @@ include = [
 "LICENSE",
 ]
 
+[project.urls]
+Repository = "https://github.com/elisey/google_auth_decoder"
+
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.13"
 sh = "^1.14.3"
 
-[tool.poetry.dev-dependencies]
-pytest = "^7.2.0"
-isort = "^5.10.1"
-mypy = "^0.991"
-flake8 = "^5.0.4"
-black = "^22.10.0"
-python-semantic-release = "^7.32.2"
-bandit = "^1.7.4"
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+mypy = "^1.15.0"
+ruff = "^0.11.10"
+bandit = "^1.8.3"
+
+[poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+mypy = "^1.15.0"
+python-semantic-release = "^9.21.1"
+bandit = "^1.8.3"
 
 [tool.mypy]
 strict = true
 ignore_missing_imports = true
 
-[tool.black]
+[tool.ruff]
 line-length = 120
-target_version = ['py38']
+lint.select = ["ALL"]
+lint.ignore = ["D100", "D101", "D102", "D103", "D104", "D105", "D107", "D203", "D211", "D213", "COM812", "S603", "PERF401", "SIM102", "N818"]
+target-version = "py313"
+extend-exclude = ["tests"]
 
-[tool.isort]
-profile = "django"
-lines_after_imports = 2
-line_length = 120
-src_paths = ["service"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

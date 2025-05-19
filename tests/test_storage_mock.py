@@ -2,15 +2,16 @@ from unittest import mock
 
 import pytest
 import sh
+
 from pykeychain import AlreadyExistsException, NotFoundException, Storage
 
 
-@pytest.fixture()
+@pytest.fixture
 def storage(service, account):
-    yield Storage(service)
+    return Storage(service)
 
 
-@pytest.fixture()
+@pytest.fixture
 def patched_security():
     with mock.patch("sh.security", create=True) as patched_security:
         yield patched_security

@@ -1,8 +1,9 @@
 import pytest
+
 from pykeychain import AlreadyExistsException, NotFoundException, Storage
 
 
-@pytest.fixture()
+@pytest.fixture
 def storage(service, account):
     def _remove_entries(storage, account):
         try:
@@ -16,7 +17,7 @@ def storage(service, account):
     _remove_entries(storage, account)
 
 
-@pytest.fixture()
+@pytest.fixture
 def storage_with_accounts(service, accounts):
     def _remove_entries(storage, accounts):
         for account in accounts:

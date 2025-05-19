@@ -15,7 +15,7 @@ class NotFoundException(Exception):
 
 
 class Storage:
-    def __init__(self, service: str):
+    def __init__(self, service: str) -> None:
         self.service = service
 
     def get_password(self, account: str) -> str:
@@ -28,8 +28,8 @@ class Storage:
                 a=account,
                 _out=out,
             )
-        except sh.ErrorReturnCode_44:
-            raise NotFoundException
+        except sh.ErrorReturnCode_44 as e:
+            raise NotFoundException from e
 
         output = out.getvalue()
         return output[:-1]
@@ -42,8 +42,8 @@ class Storage:
                 a=account,
                 w=password,
             )
-        except sh.ErrorReturnCode_45:
-            raise AlreadyExistsException
+        except sh.ErrorReturnCode_45 as e:
+            raise AlreadyExistsException from e
 
     def delete(self, account: str) -> None:
         try:
@@ -52,8 +52,8 @@ class Storage:
                 s=self.service,
                 a=account,
             )
-        except sh.ErrorReturnCode_44:
-            raise NotFoundException
+        except sh.ErrorReturnCode_44 as e:
+            raise NotFoundException from e
 
     def item_exists(self, account: str) -> bool:
         try:
@@ -63,8 +63,7 @@ class Storage:
         return True
 
     def get_all_accounts(self) -> list[str]:
-        """
-        Return all accounts in keychain in current service name.
+        """Return all accounts in keychain in current service name.
 
         Each section has this structure:
             keychain:
