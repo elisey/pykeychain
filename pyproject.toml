@@ -1,6 +1,6 @@
 [project]
 name = "pykeychain"
-version = "2.0.0"
+version = "2.0.1"
 description = "Library for adding, getting and removing simple passwords from macos keychain."
 authors = [
     { name = "Elisei", email = "elisey.rav@gmail.com" }
@@ -17,7 +17,7 @@ include = [
 ]
 
 [project.urls]
-Repository = "https://github.com/elisey/google_auth_decoder"
+Repository = "https://github.com/elisey/pykeychain"
 
 [tool.poetry.dependencies]
 python = "^3.13"
